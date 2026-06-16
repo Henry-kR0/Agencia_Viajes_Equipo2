@@ -1,1 +1,205 @@
+h1{
+    text-align: center;
+}
+/* --- BOTONES: EFECTO CONCHA/ALMEJA --- */
+.btn-registrarse {
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #00ffaa;
+    color: #00334e;
+    border: none;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+}
+ .btn-registrarse:hover {
+    transform: scale(1.08) translateY(-4px);
+    box-shadow: 0px 8px 25px rgba(0, 255, 170, 0.8);
+    background-color: #00e699;
+}
+.contenedor-botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.contenedor {
+    position: relative; /* Mantiene el contenedor por encima del fondo animado */
+    z-index: 10;
+    width: 100%;
+    max-width: 900px;
+    margin: 80px auto;
+    background: rgb(135, 206, 250);
+    padding: 20px;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #9f021aa0, #00cc99);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    position: relative; /* Necesario para contener los elementos del fondo */
+    overflow-x: hidden; /* Evita barras de desplazamiento horizontales */
+}
 
+p {
+    color: #090101;
+    text-align: center;
+}
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* --- IMÁGENES: EFECTO FLOTANTE --- */
+img {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    margin: 20px auto;
+    animation: flotarMarisco 4s ease-in-out infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05) translateY(-5px);
+    filter: drop-shadow(0px 10px 20px rgba(0, 255, 170, 0.5));
+}
+/* Contenedor general del fondo animado */
+.burbujas-bg {
+    position: fixed;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Detrás del formulario */
+    pointer-events: none; /* Permite hacer clic a través de ellos */
+}
+
+/* Estilo base para las burbujas */
+.burbuja {
+    position: absolute;
+    bottom: -50px;
+    border-radius: 50%;
+    animation: subirBurbujas 8s infinite linear;
+}
+
+/* --- Burbujas Individuales con sus Colores --- */
+.burbuja:nth-child(1) { 
+    left: 10%; width: 30px; height: 30px; animation-duration: 7s; animation-delay: 0s;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 99, 71, 0.4), rgba(255, 69, 0, 0.1));
+    border: 1px solid rgba(255, 99, 71, 0.6);
+}
+.burbuja:nth-child(2) { 
+    left: 25%; width: 15px; height: 15px; animation-duration: 9s; animation-delay: 2s;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 242, 254, 0.5), rgba(79, 172, 254, 0.1));
+    border: 1px solid rgba(0, 242, 254, 0.6);
+}
+.burbuja:nth-child(3) { 
+    left: 40%; width: 45px; height: 45px; animation-duration: 11s; animation-delay: 1s;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 255, 170, 0.4), rgba(0, 230, 153, 0.1));
+    border: 1px solid rgba(0, 255, 170, 0.6);
+}
+.burbuja:nth-child(4) { 
+    left: 55%; width: 20px; height: 20px; animation-duration: 6s; animation-delay: 4s;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.4), rgba(255, 165, 0, 0.1));
+    border: 1px solid rgba(255, 215, 0, 0.6);
+}
+.burbuja:nth-child(5) { 
+    left: 70%; width: 35px; height: 35px; animation-duration: 10s; animation-delay: 3s;
+    background: radial-gradient(circle at 30% 30%, rgba(238, 130, 238, 0.4), rgba(147, 112, 219, 0.1));
+    border: 1px solid rgba(238, 130, 238, 0.6);
+}
+.burbuja:nth-child(6) { 
+    left: 85%; width: 25px; height: 25px; animation-duration: 8s; animation-delay: 5s;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* --- NUEVO: Estilos para los Cangrejos del Fondo --- */
+.cangrejo-fondo {
+    position: absolute;
+    bottom: -60px;
+    font-size: 30px; /* Tamaño del emoji */
+    user-select: none;
+    animation: subirCangrejos 10s infinite ease-in-out;
+}
+
+/* Posiciones y tiempos para los cangrejos */
+.cangrejo-fondo:nth-child(7) { left: 18%; animation-duration: 12s; animation-delay: 1s; }
+.cangrejo-fondo:nth-child(8) { left: 48%; animation-duration: 14s; animation-delay: 5s; }
+.cangrejo-fondo:nth-child(9) { left: 78%; animation-duration: 10s; animation-delay: 3s; }
+
+
+/* --- ANIMACIONES DE SUBIDA --- */
+
+/* Animación de las Burbujas */
+@keyframes subirBurbujas {
+    0% { bottom: -50px; transform: translateX(0); opacity: 0; }
+    10% { opacity: 0.7; }
+    50% { transform: translateX(30px); }
+    90% { opacity: 0.7; }
+    100% { bottom: 110vh; transform: translateX(-30px); opacity: 0; }
+}
+
+/* Animación de los Cangrejos: Suben tambaleándose y girando un poco */
+@keyframes subirCangrejos {
+    0% {
+        bottom: -60px;
+        transform: translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.8;
+    }
+    33% {
+        transform: translateX(-25px) rotate(-15deg); /* Camina de lado a la izquierda */
+    }
+    66% {
+        transform: translateX(25px) rotate(15deg);  /* Camina de lado a la derecha */
+    }
+    85% {
+        opacity: 0.8;
+    }
+    100% {
+        bottom: 110vh;
+        transform: translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+}
+/* --- CUADRO DE DATOS INTERACTIVO --- */
+.cuadro-datos {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 3px solid #00ffaa; /* Tu verde neón */
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    color: #00334e;
+    text-align: center;
+    /* Transición con rebote tipo cangrejo */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.cuadro-datos:hover {
+    transform: scale(1.04) rotate(1deg); /* Se inclina un poquito */
+    box-shadow: 0px 12px 25px rgba(0, 255, 170, 0.4);
+}
+
+.cuadro-datos h3 {
+    margin-top: 0;
+    color: #010c12;
+}
